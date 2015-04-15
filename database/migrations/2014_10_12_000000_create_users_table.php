@@ -12,27 +12,25 @@ class CreateUsersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('user', function(Blueprint $table)
+		Schema::create('users', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('first_name');
-                        $table->stritg('Last_name');
+			$table->string('name');
 			$table->string('email')->unique();
 			$table->string('password', 60);
-                        $table->foreign('user_type')->references('id')->on('usertype')->onDelete('cascade');
 			$table->rememberToken();
-			$table->timestamps('create_at');
+			$table->timestamps();
 		});
 	}
 
 	/**
-	 * Reverse the migrations.l
+	 * Reverse the migrations.
 	 *
 	 * @return void
 	 */
 	public function down()
 	{
-		Schema::drop('user');
+		Schema::drop('users');
 	}
 
 }
